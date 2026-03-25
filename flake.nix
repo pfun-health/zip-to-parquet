@@ -3,13 +3,16 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     naersk.url = "github:nix-community/naersk";
+    devenv.url = "github:cachix/devenv";
   };
 
   outputs = {
     self,
     flake-utils,
     naersk,
-    nixpkgs,
+      nixpkgs,
+      devenv,
+      ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = (import nixpkgs) {inherit system;};
